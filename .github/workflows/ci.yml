@@ -1,0 +1,32 @@
+#
+# ci.yml
+#
+# Run tests for all pushed commits and opened pull requests on Github.
+#
+
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Set up NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - name: install
+        run: pnpm install
+      - name: build & test
+        run: |
+          pnpm run lint
+          pnpm run build
+          pnpm run test
+        env:
+          CI: true

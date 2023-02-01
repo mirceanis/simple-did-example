@@ -1,0 +1,15 @@
+# NodeJS
+node_modules
+build
+coverage
+.husky
+
+# Editor
+.vscode
+.idea
+
+# System
+.DS_Store
+
+# Misc
+LICENSE

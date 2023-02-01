@@ -1,0 +1,9 @@
+# TypeScript files
+src
+
+# Editor
+.vscode
+.idea
+
+# System
+.DS_Store
